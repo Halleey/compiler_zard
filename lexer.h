@@ -1,20 +1,18 @@
-#ifndef LEXER_H
-#define LEXER_H
-
+#ifndef TOKEN_H
+#define TOKEN_H
 
 typedef enum {
     KEYWORD, IDENTIFIER, OPERATOR, NUMBER, STRING, DELIMITER, END_EOF, BOOLEAN, INSTANCE, METHODS
-
 } TokenType;
 
-typedef struct Lexer
-{
+typedef struct {
     TokenType type;
-    char *value;
-};
+    char *value; 
+} Token;
 
-Lexer create_token(TokenType type, const char * value);
-Lexer get_next_token(const char **src);
-void free_token(Lexer *lexer);
+// Declaração das funções do lexer
+Token create_token(TokenType type, const char *value);
+Token get_next_token(const char **src);
+void free_token(Token *token);
 
-#endif
+#endif // TOKEN_H
